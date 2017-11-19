@@ -1,5 +1,6 @@
 FROM  airdb/alpine
 MAINTAINER  Dean <Dean@airdb.com>
+
 # Build image: 
 # docker build . --rm -t airdb/alpine-nginx -f  nginx.dockerfile
 # Run Container:
@@ -13,7 +14,10 @@ RUN apk add --no-cache --virtual .build-deps \
     mysql-client \
     nmap \
     redis \
-    vim
-    #openssh-server
-    #openssh-server
-CMD ["ls /bin"]
+    vim \
+    fping \
+    openssh-server \
+    openssh \
+    git \
+    subversion
+CMD ["/bin/sh"]
