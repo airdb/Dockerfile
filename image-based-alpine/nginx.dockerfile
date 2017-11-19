@@ -1,13 +1,19 @@
 FROM  airdb/alpine
 MAINTAINER  Dean <Dean@airdb.com>
+# Build image: 
+# docker build . --rm -t airdb/alpine-nginx -f  nginx.dockerfile
+# Run Container:
+# docker run -d --name access -p 80:80 -p 443:443 airdb/alpine-nginx
 
-ENV NGINX_VERSION 1.12.2
-ENV NGINX_PKG nginx-${NGINX_VERSION}.tar.gz
-#ENV NGINX_VERSION http://nginx.org/download/nginx-1.12.2.tar.gz
+# Step 1: List service infomation and choose stable version.
+ENV SERVICE nginx
+ENV VERSION 1.12.2
+ENV SERVICE_PKG ${SERVICE}-${VERSION}.tar.gz
 
-ENV WORKDIR /srv
-WORKDIR $WORKDIR
-ENV CONFIG "--prefix=$WORKDIR/nginx --with-stream"
+# Step 2: Complie software from source code.
+ENV HOMEDIR /srv
+WORKDIR $HOMEDIR
+ENV CONFIG "--prefix=$HOMEDIR/$SERVICE --with-stream"
 
 RUN apk add --no-cache --virtual .build-deps \
       gcc \
@@ -19,18 +25,20 @@ RUN apk add --no-cache --virtual .build-deps \
       linux-headers \
       wget \
       jemalloc-dev \
-   && wget "http://nginx.org/download/${NGINX_PKG}" -O /srv/${NGINX_PKG} \
-   && tar xf /srv/${NGINX_PKG} -C /srv \ 
-   && cd /srv/nginx-${NGINX_VERSION} \
+   && wget "http://nginx.org/download/${SERVICE_PKG}" -O /srv/${SERVICE_PKG} \
+   && tar xf $HOMEDIR/${SERVICE_PKG} -C /srv \ 
+   && cd $HOMEDIR/$SERVICE-$VERSION \
    && ./configure $CONFIG \
    && make \
    && make install \
-   && rm -rf /srv/nginx-*
+   && rm -rf $HOMEDIR/$SERVICE-*
 
-ADD nginx.conf /srv/nginx/conf/
-ADD conf.d /srv/nginx/conf/
+# Step 3: Configure default settings.
+ADD nginx/nginx.conf $HOMEDIR/$SERVICE/conf/
+ADD nginx/conf.d/default.conf $HOMEDIR/$SERVICE/conf/conf.d/
+
+# step 4: Run it through docker.
+WORKDIR $HOMEDIR/$SERVICE
 
 EXPOSE 80 443
-#ENTRYPOINT ["mysql"]
 CMD ["/srv/nginx/sbin/nginx", "-c", "/srv/nginx/conf/nginx.conf", "-g", "daemon off;"]
-# ENTRYPOINT ["/srv/nginx/sbin/nginx", "-c", "/srv/nginx/conf/nginx.conf", "-g", "daemon off;"]
