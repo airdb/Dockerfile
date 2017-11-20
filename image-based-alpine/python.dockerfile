@@ -8,8 +8,8 @@ MAINTAINER  Dean <Dean@airdb.com>
 
 # Step 1: List service infomation and choose stable version.
 ENV SERVICE Python
-# ENV VERSION 2.7.10
-ENV VERSION 3.6.3
+ENV VERSION 2.7.14
+# ENV VERSION 3.6.3
 ENV SERVICE_PKG ${SERVICE}-${VERSION}.tgz
 
 # Step 2: Complie software from source code.
@@ -27,6 +27,8 @@ RUN apk add --no-cache --virtual .build-deps \
       linux-headers \
       wget \
       jemalloc-dev \
+      tcl-dev \
+      file \
    && wget --no-check-certificate "https://www.python.org/ftp/python/$VERSION/${SERVICE_PKG}" -O /srv/${SERVICE_PKG} \
    && tar xf $HOMEDIR/${SERVICE_PKG} -C /srv \ 
    && cd $HOMEDIR/$SERVICE-$VERSION \
@@ -42,4 +44,5 @@ ENV PATH $PATH:$HOMEDIR/$SERVICE
 # step 4: Run it through docker.
 
 EXPOSE 80
-CMD ["/srv/Python/bin/python3"]
+#CMD ["/srv/Python/bin/python3"]
+CMD ["/srv/Python/bin/python"]

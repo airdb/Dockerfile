@@ -7,18 +7,21 @@ MAINTAINER  Dean <Dean@airdb.com>
 # docker run -d --name access airdb/alpine-toolbox
 
 # Step 1: List service infomation and choose stable version.
-ENV SERVICE toolbox
+ENV SERVICE go
 ENV VERSION 1.12.2
+ENV SERVICE_PKG $SERVICE$VERSION.linux-amd64.tar.gz
+
+ENV HOMEDIR /srv
+WORKDIR $HOMEDIR
 
 RUN apk add --no-cache --virtual .build-deps \
     bash \
     mysql-client \
-    nmap \
-    redis \
     vim \
-    fping \
-    openssh-server \
     openssh \
-    git \
-    subversion
-CMD ["/bin/sh"]
+    git
+
+RUN wget https://redirector.gvt1.com/edgedl/go/$SERVICE_PKG -O $HOMEDIR/$SERVICE_PKG \
+    && tar xf $HOMEDIR/${SERVICE_PKG} -C  $HOMEDIR
+
+CMD ["/bin/bash", "--login", "--init-file", "/etc/profile"]
