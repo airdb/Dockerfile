@@ -1,0 +1,7 @@
+apk add --no-cache --virtual .build-deps \
+gcc
+libc-dev
+bash
+
+
+linux-headers

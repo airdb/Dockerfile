@@ -21,4 +21,4 @@ RUN apk add --no-cache --virtual .build-deps \
     openssh \
     git \
     subversion
-CMD ["/bin/sh"]
+CMD ["/bin/sh", "/etc/profile"]
