@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM airdb.com/alpine-go:latest
 
 MAINTAINER Dean dean@airdb.com
 # github webhook:  github.com/adnanh/webhook
