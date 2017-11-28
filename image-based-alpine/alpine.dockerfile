@@ -11,7 +11,8 @@ LABEL description="Alpine minirootfs lastet stable" \
 ADD alpine-minirootfs-3.6.2-x86_64.tar.gz  /
 ADD motd /etc/motd
 ADD Shanghai /etc/localtime
+ADD airdb.com.sh /etc/profile.d/
 
 WORKDIR /srv
 
-CMD ["/bin/sh"]
+CMD ["/bin/sh", "--login"]
