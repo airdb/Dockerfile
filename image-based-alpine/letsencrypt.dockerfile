@@ -1,13 +1,7 @@
 FROM airdb/alpine
 
-ENV CERTBOT_VER v0.14.2
-
 LABEL description="Letsencrypt based on alpine" \
-tags="latest 1.0.0  0.1" \
-build_ver="20170101"
-
-LABEL description="Letsencrypt based on alpine" \
-      tags="latest 0.14.2 0.14" \
+      tags="latest 1.0.0 0.14" \
       maintainer="Dean <https://github.com/airdb/docker>" \
       build_ver="20171123143200"
 
@@ -30,8 +24,10 @@ RUN BUILD_DEPS="py2-pip \
     && apk del ${BUILD_DEPS} \
     && rm -rf /var/cache/apk/* /root/.cache/pip
 
-EXPOSE 80 443
-VOLUME /etc/letsencrypt/
+EXPOSE 80
 
-ENTRYPOINT ["/sbin/tini","--","/usr/certbot/venv/bin/certbot"]
+# Expose volume for adding credentials
+VOLUME ["~/.aws"]
+
+ENTRYPOINT ["pwd"]
 CMD ["--help"]
