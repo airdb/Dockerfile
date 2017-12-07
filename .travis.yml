@@ -11,7 +11,7 @@ go:
 addons:
     apt:
         package:
-            - vim
+            - docker-ce
 
 # cache components
 before_install:
@@ -22,7 +22,7 @@ install:
 before_script:
     - docker run -it --rm airdb/alpine echo yes
 script:
-      - curl airdb.com/script
+    - docker build . -t airdb/vim -f image-based-alpine/vim.dockerfile
 after_success:
     - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 after_failure:
