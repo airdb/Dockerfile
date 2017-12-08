@@ -80,45 +80,45 @@ RUN curl -s https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim
     && echo "call vundle#begin()" >> $UHOME/.vimrc \
     && echo "call vundle#end()" >> $UHOME/.vimrc \
     && echo "filetype plugin indent on" >> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/fatih/vim-go'" >> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/pangloss/vim-javascript'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/scrooloose/nerdcommenter'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/godlygeek/tabular'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/Raimondi/delimitMate'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/nathanaelkane/vim-indent-guides'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/groenewege/vim-less'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/othree/html5.vim'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/elzr/vim-json'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/bling/vim-airline'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/easymotion/vim-easymotion'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/mbbill/undotree'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/majutsushi/tagbar'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/vim-scripts/EasyGrep'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/jlanzarotta/bufexplorer'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/kien/ctrlp.vim'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/scrooloose/nerdtree'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/jistr/vim-nerdtree-tabs'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/scrooloose/syntastic'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/tomtom/tlib_vim'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/marcweber/vim-addon-mw-utils'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/vim-scripts/taglist.vim'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/terryma/vim-expand-region'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/tpope/vim-fugitive'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/airblade/vim-gitgutter'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/fatih/vim-go'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/plasticboy/vim-markdown'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/michaeljsmith/vim-indent-object'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/terryma/vim-multiple-cursors'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/tpope/vim-repeat'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/tpope/vim-surround'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/vim-scripts/mru.vim'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/vim-scripts/YankRing.vim'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/tpope/vim-haml'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/SirVer/ultisnips'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/honza/vim-snippets'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/derekwyatt/vim-scala'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/christoomey/vim-tmux-navigator'">> $UHOME/.vimrc \
-    && echo "Plugin 'file:///~/bundle/ekalinin/Dockerfile.vim'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/fatih/vim-go'" >> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/pangloss/vim-javascript'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/scrooloose/nerdcommenter'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/godlygeek/tabular'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/Raimondi/delimitMate'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/nathanaelkane/vim-indent-guides'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/groenewege/vim-less'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/othree/html5.vim'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/elzr/vim-json'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/bling/vim-airline'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/easymotion/vim-easymotion'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/mbbill/undotree'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/majutsushi/tagbar'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/vim-scripts/EasyGrep'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/jlanzarotta/bufexplorer'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/kien/ctrlp.vim'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/scrooloose/nerdtree'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/jistr/vim-nerdtree-tabs'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/scrooloose/syntastic'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/tomtom/tlib_vim'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/marcweber/vim-addon-mw-utils'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/vim-scripts/taglist.vim'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/terryma/vim-expand-region'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/tpope/vim-fugitive'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/airblade/vim-gitgutter'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/fatih/vim-go'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/plasticboy/vim-markdown'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/michaeljsmith/vim-indent-object'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/terryma/vim-multiple-cursors'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/tpope/vim-repeat'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/tpope/vim-surround'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/vim-scripts/mru.vim'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/vim-scripts/YankRing.vim'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/tpope/vim-haml'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/SirVer/ultisnips'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/honza/vim-snippets'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/derekwyatt/vim-scala'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/christoomey/vim-tmux-navigator'">> $UHOME/.vimrc \
+    && echo "Plugin 'https://github.com/ekalinin/Dockerfile.vim'">> $UHOME/.vimrc \
     && sed -i '/colorscheme peaksea/d' $UHOME/.vimrc
 
 #RUN vim -E -c 'PluginInstall' -c q ; return 0
@@ -128,3 +128,4 @@ RUN vim -c 'PluginInstall' -c 'qa!' >/dev/null ; return 0
 VOLUME ["/srv"]
 ENTRYPOINT ["vim"]
 #CMD ["/bin/sh"]
+
