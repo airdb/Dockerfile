@@ -69,7 +69,7 @@ RUN mkdir -p $UHOME/bundle \
     && git clone --depth 1 https://github.com/honza/vim-snippets \
     && git clone --depth 1 https://github.com/derekwyatt/vim-scala \
     && git clone --depth 1 https://github.com/christoomey/vim-tmux-navigator \
-    && git clone --depth 1 https://github.com/ekalinin/Dockerfile.vim \
+    && git clone --depth 1 https://github.com/ekalinin/Dockerfile.vim 
 
 # Build default .vimrc
 RUN curl -s https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim  >> $UHOME/.vimrc \
