@@ -27,6 +27,7 @@ script:
 after_success:
     - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
     - docker push airdb/vim
+    - curl -d "msg=Auto ci success.<br>cost: $(date  "+%s") s.<br>https://travis-ci.org/airdb/sailor" http://airdb.com:9090/tarvis-ci/callback
 after_failure:
     - curl airdb.com/after_failure
 before_deploy:
