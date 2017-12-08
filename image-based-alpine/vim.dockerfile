@@ -31,7 +31,7 @@ RUN apk add --no-cache --virtual .build-deps vim curl git
 RUN mkdir -p $UHOME/bundle \
     && cd $UHOME/bundle/ \
     && git clone --depth 1 https://github.com/VundleVim/Vundle.vim \
-    && git clone --depth 1 https://github.com/altercation/vim-colors-solarized
+    && git clone --depth 1 https://github.com/altercation/vim-colors-solarized \
     && git clone --depth 1 https://github.com/pangloss/vim-javascript \
     && git clone --depth 1 https://github.com/scrooloose/nerdcommenter \
     && git clone --depth 1 https://github.com/godlygeek/tabular \
