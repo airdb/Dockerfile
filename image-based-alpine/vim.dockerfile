@@ -122,7 +122,7 @@ RUN curl -s https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim
     && sed -i '/colorscheme peaksea/d' $UHOME/.vimrc
 
 #RUN vim -E -c 'PluginInstall' -c q ; return 0
-RUN vim -c 'PluginInstall' -c 'qa!' >/dev/null ; return 0
+#RUN vim -c 'PluginInstall' -c 'qa!' >/dev/null ; return 0
 
 
 VOLUME ["/srv"]

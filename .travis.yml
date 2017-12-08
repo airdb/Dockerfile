@@ -26,6 +26,7 @@ script:
     - docker images | grep airdb/vim
 after_success:
     - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+    - docker push airdb/vim
 after_failure:
     - curl airdb.com/after_failure
 before_deploy:
