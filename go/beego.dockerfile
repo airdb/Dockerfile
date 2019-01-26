@@ -8,6 +8,9 @@ RUN apt-get install -y git
 RUN go get -u github.com/astaxie/beego
 
 RUN go get -u github.com/beego/bee
+
 RUN echo export GO111MODULE=on >> /etc/profile
+
+ENV GO111MODULE on
 
 CMD ["/bin/bash"]
