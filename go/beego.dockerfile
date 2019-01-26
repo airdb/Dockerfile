@@ -1,4 +1,4 @@
-FROM golang:1.11.2
+FROM golang:1.11.5
 
 MAINTAINER Dean dean@airdb.com
 # https://github.com/nginxinc/docker-nginx
