@@ -4,6 +4,7 @@ MAINTAINER  dean
 ENV PASSWD test
 
 RUN yum -y install epel-release
+RUN yum -y install sudo
 RUN yum install -y openssh-server openssh-clients \
     && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
     && echo root:${PASSWD} | chpasswd \
@@ -11,6 +12,9 @@ RUN yum install -y openssh-server openssh-clients \
     && /usr/bin/ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key \
     && /usr/bin/ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key \
     && /usr/bin/ssh-keygen -t dsa -f /etc/ssh/ssh_host_ed25519_key 
+
+RUN echo "vagrant ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/worker
+RUN echo "Defaults:vagrant !requiretty" >> /etc/sudoers.d/worker
 
 ADD authorized_keys /root/.ssh/
 
