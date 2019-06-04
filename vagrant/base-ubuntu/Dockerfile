@@ -18,5 +18,8 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 ENV RUNNING_CONTEXT "docker"
 ENV echo "export RUNNING_CONTEXT=docker" >> /etc/profile
 
+RUN echo "export PS1=\"[\u@\H \W]\$ \"" >> /etc/profile.d/airdb.com.sh
+RUN echo "export PS1=\"[\u@\H \W]\$ \"" >> /etc/profile
+
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]

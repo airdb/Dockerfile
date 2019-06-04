@@ -3,25 +3,25 @@
 # Author: dean
 
 Vagrant.configure("2") do |config|
-  config.vm.define "node" do | host |
-    host.vm.hostname = "ubuntu-local.airdb.dev"
+  config.vm.define "base-ubuntu" do | host |
+    host.vm.hostname = "base-ubuntu.airdb.dev"
     host.ssh.username = "root"
     host.ssh.insert_key = true
-    host.ssh.private_key_path = ""
+    host.ssh.private_key_path = "/Users/dean.zhang/.ssh/id_rsa"
 
     host.vm.provider "docker" do |d|
       d.build_dir = "./"
       d.privileged = true
       d.has_ssh = true
       d.cmd = ["/sbin/init"]
-      d.ports = ["8000:8000"]
+      d.ports = ["9000:8000"]
     end
 
     host.vm.provision "shell", path: "init.sh"
 
-    host.vm.provision "ansible" do |ansible|
-      ansible.playbook = "deploy.yml"
-      ansible.verbose        = true
-    end
+    #host.vm.provision "ansible" do |ansible|
+    #  ansible.playbook = "deploy.yml"
+    #  ansible.verbose        = true
+    #end
   end
 end
