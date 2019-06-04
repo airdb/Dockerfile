@@ -9,7 +9,6 @@ Step 1: Setup
 Step 2: Prepare for Vagrant
 ```
 cd vagrant
-git clone https://git.garena.com/shopee/devops/entrytask-demo
 ```
 
 Step 3: Create vms and Deploy service
