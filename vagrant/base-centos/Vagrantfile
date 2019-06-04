@@ -1,0 +1,27 @@
+# -*- mode: ruby -*- 
+# vi: set ft=ruby :
+# Author: dean
+
+Vagrant.configure("2") do |config|
+  config.vm.define "base-centos" do | host |
+    host.vm.hostname = "base-centos.airdb.dev"
+    host.ssh.username = "root"
+    host.ssh.insert_key = true
+    host.ssh.private_key_path = ""
+
+    host.vm.provider "docker" do |d|
+      d.build_dir = "./"
+      d.privileged = true
+      d.has_ssh = true
+      d.cmd = ["/usr/sbin/init"]
+      d.ports = ["8100:8000"]
+    end
+
+    host.vm.provision "shell", path: "init.sh"
+
+    host.vm.provision "ansible" do |ansible|
+      ansible.playbook = "deploy.yml"
+      ansible.verbose  = true
+    end
+  end
+end

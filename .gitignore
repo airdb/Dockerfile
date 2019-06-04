@@ -1,0 +1,4 @@
+vagrant/base-centos/.vagrant/
+vagrant/base-ubuntu/.vagrant/
+.vagrant/*
+authorized_keys

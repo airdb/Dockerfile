@@ -1,0 +1,10 @@
+# deploy.yaml
+
+- hosts: node
+  tasks:
+        - name: install redis
+          apt: name=redis-server state=latest
+        - name: restart redis
+          service: name=redis-server enabled=yes state=restarted
+        - name: Run shell command
+          shell: echo service deploy finnish.
