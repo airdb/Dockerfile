@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-# Author: dean
+# Copyright @ airdb.com
 
 Vagrant.configure("2") do |config|
   config.vm.define "base-ubuntu" do | host |

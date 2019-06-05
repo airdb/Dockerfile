@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER  dean.zhang
+MAINTAINER  dean
 
 RUN apt-get update && apt-get install -y curl openssh-server lsb-core sudo
 RUN mkdir /var/run/sshd
@@ -10,7 +10,7 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 
 RUN echo "vagrant ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/README
 RUN echo "Defaults:vagrant !requiretty" >> /etc/sudoers.d/README
-ADD authorized_keys /root/.ssh/
+ADD https://raw.githubusercontent.com/airdb/docker/master/osinit/authorized_keys /root/.ssh/
 
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile

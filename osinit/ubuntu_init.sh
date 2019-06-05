@@ -26,11 +26,13 @@ function golang() {
 }
 
 function php() {
-    apt-get install software-properties-common
-    add-apt-repository ppa:ondrej/php
+    apt-get -y install software-properties-common
     apt-get update
+    add-apt-repository ppa:ondrej/php
 
-    #apt-get -y install php71w-xml php71w-process php71w-mbstring php71w-mysql php71w-gd php71w-common php71w-cli php71w-pear php71w-opcache php71w-bcmath php71w-pdo php71w-devel php71w-fpm php71w-pecl-imagick mod_php71w php71w-pecl-apcu
+    # libpcre3 libssl1.1 php-common php7.1-common php7.1-json php7.1-opcache php7.1-readline php7.1-cli php7.1-fpm
+    apt-get -y --allow-unauthenticated install php7.1-fpm
+    #apt-get -y --allow-unauthenticated install php7.1 php7.1-xml php7.1-process php7.1-mbstring php7.1-mysql php7.1-gd php7.1-common php7.1-cli php7.1-pear php7.1-opcache php7.1-bcmath php7.1-pdo php7.1-dev php7.1-fpm php7.1-pecl-imagick mod_php7.1 php7.1-pecl-apcu
 }
 
 function usage() {
