@@ -1,14 +1,10 @@
 Dockerfile  [![Build Status](https://travis-ci.org/airdb/docker.svg?branch=master)](https://travis-ci.org/airdb/docker)
 
+# Intro
 support docker.  haha~
 
+# Part 1 - Initialize Operating System
 
-demo:
+# Part 1 - Create local container via Vagrant
 
-生成镜像
-docker build -t airdb/beego:1.11.2  -f  beego.dockerfile .
-
-
-镜像重命名 latest
-
-docker tag airdb/beego:1.11.2  airdb/beego
+# Part 2 - Build docker image
