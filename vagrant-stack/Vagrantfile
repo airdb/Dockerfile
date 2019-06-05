@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# Author: dean
+
+Vagrant.configure("2") do |config|
+  config.vm.define "base-ubuntu" do | host |
+    host.ssh.username = "root"
+    host.ssh.insert_key = true
+    host.ssh.private_key_path = "/Users/dean/.ssh/id_rsa"
+
+    host.vm.hostname = "base-ubuntu.airdb.dev"
+    host.vm.provider "docker" do |d|
+      d.build_dir = "./"
+      d.privileged = true
+      d.has_ssh = true
+      d.cmd = ["/sbin/init"]
+      d.ports = ["9000:8000"]
+    end
+
+    host.vm.provision "shell" do |s|
+      # s.path= "https://raw.githubusercontent.com/airdb/docker/master/osinit/ubuntu_init.sh"
+      s.path = "../osinit/ubuntu_init.sh"
+      s.args = "php"
+    end
+  end
+end
