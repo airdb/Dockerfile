@@ -28,6 +28,7 @@ function golang() {
 }
 
 function php() {
+    apt-get -y install libreadline6 libreadline6-dev
     apt-get -y install software-properties-common
     add-apt-repository ppa:ondrej/php
 
