@@ -3,7 +3,9 @@
 function base() {
   echo "Set timezone"
   ln -snf /usr/share/zoneinfo/Asia/Singapore /etc/localtime && echo 'Asia/Singapore' > /etc/timezone
+
   # "cat /etc/bar" > /etc/update-motd.d/10-help-text
+  apt-get update
   apt-get -y install update-motd
   update-motd
 }
@@ -27,7 +29,6 @@ function golang() {
 
 function php() {
     apt-get -y install software-properties-common
-    apt-get update
     add-apt-repository ppa:ondrej/php
 
     # libpcre3 libssl1.1 php-common php7.1-common php7.1-json php7.1-opcache php7.1-readline php7.1-cli php7.1-fpm
@@ -63,6 +64,7 @@ function main() {
         python3)
             ;;
         php)
+            base
             php
             ;;
         *)
