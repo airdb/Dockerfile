@@ -28,9 +28,10 @@ function golang() {
 }
 
 function php() {
-    apt-get -y install libreadline6 libreadline6-dev
+    apt-get -y install dialog apt-utils libreadline6 libreadline6-dev
     apt-get -y install software-properties-common
-    add-apt-repository ppa:ondrej/php
+    LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
+    apt-get update
 
     # libpcre3 libssl1.1 php-common php7.1-common php7.1-json php7.1-opcache php7.1-readline php7.1-cli php7.1-fpm
     apt-get -y --allow-unauthenticated install php7.1-fpm
