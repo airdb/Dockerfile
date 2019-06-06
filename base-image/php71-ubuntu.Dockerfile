@@ -23,6 +23,6 @@ MAINTAINER  airdb.com
 RUN apt-get update && apt-get -y install curl
 RUN curl https://raw.githubusercontent.com/airdb/docker/master/osinit/ubuntu_init.sh | bash -s php
 
-EXPOSE 22
-#CMD ["/usr/sbin/sshd", "-D"]
-CMD ["/bin/bash"]
+EXPOSE 9000
+CMD ["/usr/sbin/php-fpm7.2", "-F"]
+
