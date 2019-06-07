@@ -24,5 +24,4 @@ RUN apt-get update && apt-get -y install curl
 RUN curl https://raw.githubusercontent.com/airdb/docker/master/osinit/ubuntu_init.sh | bash -s php
 
 EXPOSE 9000
-CMD ["/usr/sbin/php-fpm7.2", "-F"]
-
+CMD ["/usr/sbin/php-fpm7.1", "-F"]
