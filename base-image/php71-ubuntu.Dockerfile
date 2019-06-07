@@ -10,7 +10,7 @@ MAINTAINER  airdb.com
 #
 # RUN echo "vagrant ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/README
 # RUN echo "Defaults:vagrant !requiretty" >> /etc/sudoers.d/README
-# ADD https://raw.githubusercontent.com/airdb/docker/master/osinit/authorized_keys /root/.ssh/
+ADD https://raw.githubusercontent.com/airdb/docker/master/osinit/authorized_keys /root/.ssh/
 #
 # ENV NOTVISIBLE "in users profile"
 # RUN echo "export VISIBLE=now" >> /etc/profile
