@@ -6,14 +6,14 @@ function base() {
 
   # "cat /etc/bar" > /etc/update-motd.d/10-help-text
   apt-get update
-  apt-get -y install update-motd
+  apt-get -y install update-motd vim
   update-motd
 }
 
 function common() {
   export RUNNING_CONTEXT=docker
   export INSTALL_PACKAGES=yes
-  apt-get -y install python-pip python-dev libmysqlclient-dev vim
+  apt-get -y install python-pip python-dev libmysqlclient-dev
   apt-get -y install iputils-ping telnet net-tools
   apt-get -y install redis-server
   export LC_ALL=C

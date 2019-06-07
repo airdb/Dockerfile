@@ -7,3 +7,6 @@ brew install wget
 brew install nodejs
 brew install tree
 brew install vagrant
+
+# greadlink
+brew install coreutils
