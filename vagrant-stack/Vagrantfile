@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "base-ubuntu" do | host |
     host.ssh.username = "root"
     host.ssh.insert_key = true
-    host.ssh.private_key_path = "/Users/dean.zhang/profile/.ssh/id_rsa"
+    host.ssh.private_key_path = "/Users/dean/profile/.ssh/id_rsa"
 
     host.vm.hostname = "base-ubuntu.airdb.dev"
     host.vm.provider "docker" do |d|
@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
     host.vm.provision "shell" do |s|
       # s.path= "https://raw.githubusercontent.com/airdb/docker/master/osinit/ubuntu_init.sh"
       s.path = "../osinit/ubuntu_init.sh"
-      s.args = "php"
+      s.args = "base"
     end
   end
 end

@@ -20,5 +20,6 @@ ENV echo "export RUNNING_CONTEXT=docker" >> /etc/profile
 
 RUN echo "export PS1='[\H \W]\\$ '" >> /root/.profile
 
+WORKDIR /srv
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]

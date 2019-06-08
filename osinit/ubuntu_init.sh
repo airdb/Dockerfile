@@ -6,8 +6,16 @@ function base() {
 
   # "cat /etc/bar" > /etc/update-motd.d/10-help-text
   apt-get update
-  apt-get -y install update-motd vim
+  apt-get -y install apt-utils update-motd vim
   update-motd
+  cat >> /etc/profile << EOF
+if [ ! -z  LC_SSH_USER ]; then
+  export LC_SSH_USER=$USER
+fi
+declare -r LC_SSH_USER
+HISTTIMEFORMAT="%Y-%m-%d %T $LC_SSH_USER $SSH_TTY "
+EOF
+
 }
 
 function common() {
@@ -28,7 +36,7 @@ function golang() {
 }
 
 function php() {
-    apt-get -y install dialog apt-utils libreadline6 libreadline6-dev
+    apt-get -y install dialog libreadline6 libreadline6-dev
     apt-get -y install software-properties-common
     LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
     apt-get update

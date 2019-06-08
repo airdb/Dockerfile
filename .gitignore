@@ -3,3 +3,4 @@ vagrant/base-ubuntu/.vagrant/
 vagrant-stack/.vagrant/
 .vagrant/*
 authorized_keys
+.idea/*
