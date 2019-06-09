@@ -9,11 +9,11 @@ function base() {
   apt-get -y install apt-utils update-motd vim
   update-motd
   cat >> /etc/profile << EOF
-if [ ! -z  LC_SSH_USER ]; then
-  export LC_SSH_USER=$USER
-fi
+#if [ ! -z  LC_SSH_USER ]; then
+#  export LC_SSH_USER=$USER
+#fi
 declare -r LC_SSH_USER
-HISTTIMEFORMAT="%Y-%m-%d %T $LC_SSH_USER $SSH_TTY "
+declare -r HISTTIMEFORMAT='%Y-%m-%d %T \$LC_SSH_USER \$SSH_TTY '
 EOF
 
 }

@@ -10,3 +10,7 @@ brew install vagrant
 
 # greadlink
 brew install coreutils
+
+sudo scutil --set HostName "${USER}.airdb.me"
+
+ssh-keygen -b 2048 -C $HOSTNAME
