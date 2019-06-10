@@ -6,7 +6,7 @@ function base() {
 
   # "cat /etc/bar" > /etc/update-motd.d/10-help-text
   apt-get update
-  apt-get -y install apt-utils update-motd vim
+  apt-get -y install apt-utils apt-file update-motd vim
   update-motd
   cat >> /etc/profile << EOF
 #if [ ! -z  LC_SSH_USER ]; then
@@ -22,7 +22,7 @@ function common() {
   export RUNNING_CONTEXT=docker
   export INSTALL_PACKAGES=yes
   apt-get -y install python-pip python-dev libmysqlclient-dev
-  apt-get -y install iputils-ping telnet net-tools
+  apt-get -y install iputils-ping telnet net-tools pylint dnsutils
   apt-get -y install redis-server
   LC_ALL=C pip install -U pip
   pip install MySQL-python
