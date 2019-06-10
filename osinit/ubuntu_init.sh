@@ -12,8 +12,8 @@ function base() {
 #if [ ! -z  LC_SSH_USER ]; then
 #  export LC_SSH_USER=$USER
 #fi
-declare -r LC_SSH_USER
-declare -r HISTTIMEFORMAT='%Y-%m-%d %T \$LC_SSH_USER \$SSH_TTY '
+declare -r  LC_NAME LC_IDENTIFICATION
+HISTTIMEFORMAT="%Y-%m-%d %T \$LC_NAME \$SSH_TTY "
 EOF
 
 }
@@ -24,8 +24,7 @@ function common() {
   apt-get -y install python-pip python-dev libmysqlclient-dev
   apt-get -y install iputils-ping telnet net-tools
   apt-get -y install redis-server
-  export LC_ALL=C
-  pip install -U pip
+  LC_ALL=C pip install -U pip
   pip install MySQL-python
 }
 
