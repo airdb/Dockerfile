@@ -18,7 +18,6 @@ before_install:
     - docker pull airdb/alpine:latest
 install:
       - if [ $TRAVIS_OS_NAME = linux ]; then echo linux; else echo xxx; fi
-      - curl airdb.com/install
 before_script:
     - docker run -it --rm airdb/alpine echo yes
 script:
