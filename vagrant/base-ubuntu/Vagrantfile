@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
     host.vm.hostname = "base-ubuntu.airdb.dev"
     host.ssh.username = "root"
     host.ssh.insert_key = true
-    host.ssh.private_key_path = "/Users/dean/.ssh/id_rsa"
+    host.ssh.private_key_path = "/Users/dean.zhang/.ssh/id_rsa"
 
     host.vm.provider "docker" do |d|
       d.build_dir = "./"

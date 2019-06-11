@@ -6,3 +6,5 @@ support docker.  haha~
 # Part 1 - Create Docker Base Images
 
 # Part 2 - Development Environment
+
+`vagrant global-status --prune`

@@ -2,21 +2,38 @@
 # vi: set ft=ruby :
 # Copyright @ airdb.com
 
+USER = "dean.zhang"
+NAME = "base-ubuntu"
+HOSTNAME = "#{NAME}.#{USER}.airdb.me"
+VAGRANTFILE_API_VERSION = "2"
+SSH_PRIVATE_KEY = "/Users/#{USER}/profile/.ssh/id_rsa"
+
 Vagrant.configure("2") do |config|
-  config.vm.define "base-ubuntu" do | host |
+  config.vm.define "#{NAME}" do | host |
     host.ssh.username = "root"
     host.ssh.insert_key = true
-    host.ssh.private_key_path = "/Users/dean/profile/.ssh/id_rsa"
+    host.ssh.private_key_path = "#{SSH_PRIVATE_KEY}"
 
-    host.vm.hostname = "base-ubuntu.dean.airdb.me"
+    host.vm.hostname = "#{HOSTNAME}"
     host.vm.provider "docker" do |d|
       d.build_dir = "./"
+      #d.build_args = ["--no-cache"]
+      d.create_args = ["-e", "AAAA=11111"]
+      d.name = "#{HOSTNAME}"
       d.privileged = true
       d.has_ssh = true
       d.cmd = ["/sbin/init"]
       d.ports = ["9000:8000"]
+      d.env = {
+	:LC_PORT   => '2337',
+	:LC_ALL   => 'en_US.UTF-7',
+	:SSH_SUDO => 'ALL=(ALL) NOPASSWD:ALL',
+	CKAN_PASS: "ckan_pass",
+	"SSH_PORT":"23"
+      }
     end
 
+    host.vm.synced_folder "/Users/dean.zhang/go/src/", "/srv"
     config.vm.network "public_network", ip: "192.168.1.250"
     host.vm.provision "shell" do |s|
       # s.path= "https://raw.githubusercontent.com/airdb/docker/master/osinit/ubuntu_init.sh"
