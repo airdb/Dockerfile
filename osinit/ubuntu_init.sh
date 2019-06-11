@@ -4,6 +4,7 @@ function base() {
   echo "Set timezone"
   ln -snf /usr/share/zoneinfo/Asia/Singapore /etc/localtime && echo 'Asia/Singapore' > /etc/timezone
 
+  export LANG=en_US.UTF-8
   # "cat /etc/bar" > /etc/update-motd.d/10-help-text
   apt-get update
   apt-get -y install apt-utils apt-file update-motd vim
