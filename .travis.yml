@@ -29,12 +29,12 @@ after_success:
     - docker push airdb/vim
     #- curl -d "msg=Auto ci success.<br>cost: 60s.<br>https://travis-ci.org/airdb/sailor" http://airdb.com:9090/tarvis-ci/callback
 after_failure:
-    - curl airdb.com/after_failure
+    - echo
 before_deploy:
-    - curl airdb.com/before_deploy
+    - echo
 # deploy:
 #     - curl airdb.com/deploy
 after_deploy:
     - curl airdb.com/after_deploy
 after_script:
-    - curl airdb.com/after_scritp
+    - echo
