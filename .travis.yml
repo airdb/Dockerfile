@@ -25,7 +25,6 @@ script:
     - docker images | grep airdb/vim
 after_success:
     - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-    - docker push airdb/vim
     #- curl -d "msg=Auto ci success.<br>cost: 60s.<br>https://travis-ci.org/airdb/sailor" http://airdb.com:9090/tarvis-ci/callback
 after_failure:
     - echo
