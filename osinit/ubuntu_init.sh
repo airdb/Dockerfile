@@ -7,7 +7,9 @@ function base() {
   export LANG=en_US.UTF-8
   # "cat /etc/bar" > /etc/update-motd.d/10-help-text
   apt-get update
-  apt-get -y install apt-utils apt-file update-motd vim
+  export LC_ALL=C LANGUAGE="en_US" DEBIAN_FRONTEND="teletype"
+  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils
+  apt-get -y install apt-file update-motd vim
   update-motd
   cat >> /etc/profile << EOF
 #if [ ! -z  LC_SSH_USER ]; then
@@ -23,7 +25,7 @@ function common() {
   export RUNNING_CONTEXT=docker
   export INSTALL_PACKAGES=yes
   apt-get -y install python-pip python-dev libmysqlclient-dev
-  apt-get -y install iputils-ping telnet net-tools pylint dnsutils
+  apt-get -y install iputils-ping telnet net-tools pylint dnsutils tree
   apt-get -y install redis-server
   LC_ALL=C pip install -U pip
   pip install MySQL-python
