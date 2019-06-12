@@ -4,6 +4,12 @@ function base() {
   echo "Set timezone"
   ln -snf /usr/share/zoneinfo/Asia/Singapore /etc/localtime && echo 'Asia/Singapore' > /etc/timezone
 
+  #echo "Disable rc.d"
+  #echo exit 0 > /usr/sbin/update-rc.d && chmod a+x /usr/sbin/update-rc.d
+  #echo exit 0 > /usr/sbin/invoke-rc.d && chmod a+x /usr/sbin/invoke-rc.d
+  #echo exit 0 > /usr/sbin/policy-rc.d && chmod a+x /usr/sbin/policy-rc.d
+
+  export DEBIAN_FRONTEND=noninteractive
   export LANG=en_US.UTF-8
   # "cat /etc/bar" > /etc/update-motd.d/10-help-text
   apt-get update
@@ -29,6 +35,29 @@ function common() {
   apt-get -y install redis-server
   LC_ALL=C pip install -U pip
   pip install MySQL-python
+}
+
+function nodejs() {
+  echo "Install Node.js."
+  curl -sL https://deb.nodesource.com/setup_8.x | bash -
+  
+  apt-get install -y \
+    libelf-dev \
+    nodejs \
+    ocaml \
+    curl
+  
+  echo "Clean apt cache"
+  apt-get clean
+  
+  echo "Install Node.js packages."
+  npm install -g \
+    bower \
+    ember-cli \
+    forever \
+    gulp \
+    webpack \
+    yarn
 }
 
 function golang() {
