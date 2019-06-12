@@ -2,12 +2,19 @@
 # vi: set ft=ruby :
 # Copyright @ airdb.com
 
-USER = "dean"
-NAME = "base-ubuntu"
-HOSTNAME = "#{NAME}.#{USER}.airdb.me"
 VAGRANTFILE_API_VERSION = "2"
-SSH_PRIVATE_KEY = "/Users/#{USER}/profile/.ssh/id_rsa"
-SYNCED_FOLDER = "/Users/#{USER}/go/src/"
+NAME = "base-ubuntu"
+
+USER = ENV["USER"]
+HOME = ENV["HOME"]
+HOSTNAME = "#{NAME}.#{USER}.airdb.me"
+
+File.exists?("#{HOME}/profile/.ssh/id_rsa") ? SSH_PRIVATE_KEY = "#{HOME}/profile/.ssh/id_rsa" : SSH_PRIVATE_KEY = "#{HOME}/.ssh/id_rsa"
+
+SYNCED_FOLDER = "#{HOME}/go/src/"
+
+ENV["LC_PORT"] = "8000"
+
 
 Vagrant.configure("2") do |config|
   config.vm.define "#{NAME}" do | host |
@@ -29,12 +36,11 @@ Vagrant.configure("2") do |config|
 	:LC_PORT   => '2337',
 	:LC_ALL   => 'en_US.UTF-8',
 	:SSH_SUDO => 'ALL=(ALL) NOPASSWD:ALL',
-	CKAN_PASS: "ckan_pass",
 	"SSH_PORT":"23"
       }
     end
 
-    host.vm.synced_folder "#{SYNCED_FOLDER}", "/srv"
+    #host.vm.synced_folder "#{SYNCED_FOLDER}", "/srv"
     config.vm.network "public_network", ip: "192.168.1.250"
     host.vm.provision "shell" do |s|
       # s.path= "https://raw.githubusercontent.com/airdb/docker/master/osinit/ubuntu_init.sh"

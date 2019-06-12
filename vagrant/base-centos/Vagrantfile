@@ -1,13 +1,14 @@
 # -*- mode: ruby -*- 
 # vi: set ft=ruby :
-# Author: dean
+# Copyright @ airdb.com
 
+USER = ENV["USER"]
 Vagrant.configure("2") do |config|
   config.vm.define "base-centos" do | host |
     host.vm.hostname = "base-centos.airdb.dev"
     host.ssh.username = "root"
     host.ssh.insert_key = true
-    host.ssh.private_key_path = "/Users/dean.zhang/.ssh/id_rsa"
+    host.ssh.private_key_path = "/Users/#{USER}/.ssh/id_rsa"
 
     host.vm.provider "docker" do |d|
       d.build_dir = "./"

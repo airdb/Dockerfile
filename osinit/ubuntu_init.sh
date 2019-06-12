@@ -9,7 +9,7 @@ function base() {
   apt-get update
   export LC_ALL=C LANGUAGE="en_US" DEBIAN_FRONTEND="teletype"
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils
-  apt-get -y install apt-file update-motd vim
+  apt-get -y install apt-file update-motd vim git
   update-motd
   cat >> /etc/profile << EOF
 #if [ ! -z  LC_SSH_USER ]; then
