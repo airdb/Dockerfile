@@ -22,7 +22,6 @@ before_script:
     - docker run -it --rm airdb/alpine echo yes
 script:
     #- docker build . -t airdb/vim -f image-based-alpine/vim.dockerfile
-    - docker images | grep airdb/vim
 after_success:
     - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
     #- curl -d "msg=Auto ci success.<br>cost: 60s.<br>https://travis-ci.org/airdb/sailor" http://airdb.com:9090/tarvis-ci/callback
