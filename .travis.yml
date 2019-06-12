@@ -32,6 +32,6 @@ before_deploy:
 # deploy:
 #     - curl airdb.com/deploy
 after_deploy:
-    - curl airdb.com/after_deploy
+    - echo
 after_script:
     - echo
