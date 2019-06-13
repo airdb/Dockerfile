@@ -5,9 +5,6 @@ dist: trusty
 sudo: required
 services:
       - docker
-language: go
-go:
-    - 1.8
 addons:
     apt:
         package:
@@ -15,6 +12,6 @@ addons:
 
 # cache components
 before_install:
-    - docker pull airdb/alpine:latest
+    - echo "install"
 install:
       - if [ $TRAVIS_OS_NAME = linux ]; then echo linux; else echo xxx; fi
