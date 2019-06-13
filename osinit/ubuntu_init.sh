@@ -27,11 +27,11 @@ EOF
 
 }
 
-function common() {
+function toolbox() {
   export RUNNING_CONTEXT=docker
   export INSTALL_PACKAGES=yes
   apt-get -y install python-pip python-dev libmysqlclient-dev
-  apt-get -y install iputils-ping telnet net-tools pylint dnsutils tree
+  apt-get -y install iputils-ping telnet net-tools pylint dnsutils tree git whois
   apt-get -y install redis-server
   LC_ALL=C pip install -U pip
   pip install MySQL-python
@@ -68,17 +68,17 @@ function golang() {
 
 function php() {
     apt-get -y install dialog libreadline6 libreadline6-dev
-    apt-get -y install software-properties-common
+    apt-get -y install software-properties-toolbox
     LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
     apt-get update
 
-    # libpcre3 libssl1.1 php-common php7.1-common php7.1-json php7.1-opcache php7.1-readline php7.1-cli php7.1-fpm
+    # libpcre3 libssl1.1 php-toolbox php7.1-toolbox php7.1-json php7.1-opcache php7.1-readline php7.1-cli php7.1-fpm
     PHP_VERSION=7.1
     apt-get -y --allow-unauthenticated install php${PHP_VERSION}-fpm
     sed -i 's/^listen = .*/listen = 0.0.0.0:9000/' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
     mkdir -p /run/php/
 
-    #apt-get -y --allow-unauthenticated install php7.1 php7.1-xml php7.1-process php7.1-mbstring php7.1-mysql php7.1-gd php7.1-common php7.1-cli php7.1-pear php7.1-opcache php7.1-bcmath php7.1-pdo php7.1-dev php7.1-fpm php7.1-pecl-imagick mod_php7.1 php7.1-pecl-apcu
+    #apt-get -y --allow-unauthenticated install php7.1 php7.1-xml php7.1-process php7.1-mbstring php7.1-mysql php7.1-gd php7.1-toolbox php7.1-cli php7.1-pear php7.1-opcache php7.1-bcmath php7.1-pdo php7.1-dev php7.1-fpm php7.1-pecl-imagick mod_php7.1 php7.1-pecl-apcu
 }
 
 function usage() {
@@ -86,7 +86,7 @@ function usage() {
    echo
    echo "Options:"
    echo "\tbase"
-   echo "\tcommon"
+   echo "\ttoolbox"
    echo "\tgolang"
    echo "\tpython"
    echo "\tphp"
@@ -97,9 +97,9 @@ function main() {
         base)
             base
             ;;
-        common)
+        toolbox)
             base
-            common
+            toolbox
             ;;
         golang)
             golang
