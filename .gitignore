@@ -1,6 +1,7 @@
 vagrant/base-centos/.vagrant/
 vagrant/base-ubuntu/.vagrant/
 vagrant-stack/.vagrant/
+vagrant/.vagrant
 .vagrant/*
 authorized_keys
 .idea/*

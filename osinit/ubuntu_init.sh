@@ -33,23 +33,23 @@ function toolbox() {
   apt-get -y install python-pip python-dev libmysqlclient-dev
   apt-get -y install iputils-ping telnet net-tools pylint dnsutils tree git whois
   apt-get -y install redis-server
-  LC_ALL=C pip install -U pip
   pip install MySQL-python
+  LC_ALL=C pip install -U pip
 }
 
 function nodejs() {
   echo "Install Node.js."
   curl -sL https://deb.nodesource.com/setup_8.x | bash -
-  
+
   apt-get install -y \
     libelf-dev \
     nodejs \
     ocaml \
     curl
-  
+
   echo "Clean apt cache"
   apt-get clean
-  
+
   echo "Install Node.js packages."
   npm install -g \
     bower \
