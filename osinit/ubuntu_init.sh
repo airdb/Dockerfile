@@ -54,6 +54,7 @@ function nodejs() {
   npm install -g \
     @vue/cli \
     wepy-cli \
+    lint-md \
     ember-cli \
     forever \
     gulp \
