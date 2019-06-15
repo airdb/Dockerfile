@@ -52,7 +52,8 @@ function nodejs() {
 
   echo "Install Node.js packages."
   npm install -g \
-    bower \
+    @vue/cli \
+    wepy-cli \
     ember-cli \
     forever \
     gulp \
@@ -107,6 +108,10 @@ function main() {
         python)
             ;;
         python3)
+            ;;
+        vue)
+            base
+            nodejs
             ;;
         php)
             base

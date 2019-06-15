@@ -1,4 +1,7 @@
-Dockerfile  [![Build Status](https://travis-ci.org/airdb/docker.svg?branch=master)](https://travis-ci.org/airdb/docker)
+Docker
+
+[![LICENSE](https://img.shields.io/badge/license-airdb-blue.svg)](https://github.com/airdb)
+[![Build Status](https://travis-ci.org/airdb/docker.svg?branch=master)](https://travis-ci.org/airdb/docker)
 
 # Intro
 support docker.  haha~
@@ -11,7 +14,12 @@ Step 1: Setup
 
 Step 2: Prepare for Vagrant
 ```
-cd vagrant
+git clone https://github.com/airdb/docker
+cd docker/vagrant
+```
+or
+```
+wget https://raw.githubusercontent.com/airdb/docker/master/vagrant/Vagrantfile -p $your_vagrant_path
 ```
 
 Step 3: Create vms and Deploy service
@@ -21,6 +29,10 @@ Step 3: Create vms and Deploy service
   vagrant ssh
 ```
 
-# Part 2 - Development Environment
+Step 4: Clean bad vagrant information.
 
 `vagrant global-status --prune`
+
+# Part 2 - Development Environment
+
+
