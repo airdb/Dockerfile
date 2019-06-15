@@ -24,7 +24,8 @@ Vagrant.configure("2") do |config|
 
     host.vm.hostname = "#{HOSTNAME}"
     host.vm.provider "docker" do |d|
-      d.dockerfile = "../base-image/vim.dockerfile"
+      # d.dockerfile = "../base-image/vagrant-ubuntu.dockerfile"
+      d.dockerfile = "https://raw.githubusercontent.com/airdb/docker/master/base-image/alpine/lint.dockerfile"
       d.build_dir = "./"
       #d.build_args = ["--no-cache"]
       d.create_args = ["-e", "AAAA=11111"]

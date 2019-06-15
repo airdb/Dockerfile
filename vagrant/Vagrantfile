@@ -2,23 +2,27 @@
 # vi: set ft=ruby :
 # Copyright @ airdb.com
 
-VAGRANTFILE_API_VERSION = "2"
 NAME = "toolbox"
-DOCKERFILE = "../base-image/alpine/lint.dockerfile"
-IMAGE = "airdb/lint"
-INIT_FILE = "../osinit/alpine_init.sh"
+OS = "alpine"
+TAG = "base"
+ENV["LC_PORT"] = "8080"
+
+DOCKERFILE = "../images/#{OS}/#{TAG}.dockerfile"
+IMAGE = "airdb/#{OS}_#{TAG}"
+INIT_FILE = "../osinit/#{OS}_init.sh"
 
 USER = ENV["USER"]
 HOME = ENV["HOME"]
-HOSTNAME = "#{NAME}.#{USER}.airdb.me"
+FULLNAME = "#{NAME}-#{OS}"
+HOSTNAME = "#{FULLNAME}.#{USER}.airdb.me"
 RAW_PATH = "https://raw.githubusercontent.com/airdb/docker/master/vagrant"
 
 File.exists?("#{HOME}/profile/.ssh/id_rsa") ? SSH_PRIVATE_KEY = "#{HOME}/profile/.ssh/id_rsa" : SSH_PRIVATE_KEY = "#{HOME}/.ssh/id_rsa"
 
-ENV["LC_PORT"] = "8080"
 
+VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure("2") do |config|
-  config.vm.define "#{NAME}" do | host |
+  config.vm.define "#{FULLNAME}" do | host |
     host.ssh.username = "root"
     host.ssh.shell = "/bin/sh"
     host.ssh.insert_key = true
@@ -30,11 +34,11 @@ Vagrant.configure("2") do |config|
         d.dockerfile = "#{DOCKERFILE}"
         d.build_dir = "./"
         d.build_args = ["--no-cache"]
-        d.build_args = ["-t", "#{NAME}"]
+        d.build_args = ["-t", "#{FULLNAME}"]
       else
         d.image = "#{IMAGE}"
       end
-      d.create_args = ["-e", "AAAA=11111"]
+      d.create_args = ["-e AAAA=11111"]
       d.name = "#{HOSTNAME}"
       d.privileged = true
       d.has_ssh = true
@@ -47,7 +51,7 @@ Vagrant.configure("2") do |config|
 
     if File.exists?("#{INIT_FILE}")
       host.vm.provision "shell" do |s|
-        s.path = "../osinit/alpine_init.sh"
+        s.path = "../osinit/#{INIT_FILE}"
         s.args = "base"
       end
     else
