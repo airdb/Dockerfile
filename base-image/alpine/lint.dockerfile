@@ -15,6 +15,7 @@ ENV HOMEDIR /srv
 WORKDIR $HOMEDIR
 
 RUN apk add --update --no-cache --virtual .build-deps \
+      curl \
       git \
       vim \
       sudo \
@@ -39,6 +40,7 @@ RUN echo "export GO111MODULE=on" >> /etc/profile
 RUN echo 'export HISTTIMEFORMAT="%Y-%m-%d %T \$LC_NAME \$SSH_TTY " ' >> /etc/profile
 
 ADD https://raw.githubusercontent.com/airdb/docker/master/templates/sudoers.d/vagrant /etc/sudoers.d/
+RUN chmod +x /bin/run_lint.sh
 
 EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
+CMD /bin/run_lint.sh
