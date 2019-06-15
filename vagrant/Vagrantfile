@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
         s.args = "base"
       end
     else
-      host.vm.provision "shell", inline: "curl #{RAW_PATH}/#{INIT_FILE} | bash -s base"
+      host.vm.provision "shell", inline: "curl #{RAW_PATH}/#{INIT_FILE} | sh -s base"
     end
   end
 end
