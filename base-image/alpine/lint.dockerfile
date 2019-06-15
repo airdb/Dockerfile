@@ -7,6 +7,7 @@ ENV PS1 '[\H \W]\$ '
 ENV PASSWD airdb.com
 
 ADD https://raw.githubusercontent.com/airdb/docker/master/templates/motd /etc/motd
+ADD https://raw.githubusercontent.com/airdb/docker/master/osinit/run_lint.sh /bin/
 ADD https://raw.githubusercontent.com/airdb/docker/master/osinit/authorized_keys /root/.ssh/
 
 #ADD airdb.com.sh /etc/profile.d/
@@ -33,6 +34,8 @@ RUN apk add --update --no-cache --virtual .build-deps \
 ENV RUNNING_CONTEXT "docker"
 RUN echo "export RUNNING_CONTEXT=docker" >> /etc/profile
 RUN echo "export PS1='[\H \W]\\$ '" >> /etc/profile
+RUN echo "export PATH='$PATH:$HOME/go/bin'" >> /etc/profile
+RUN echo "export GO111MODULE=on" >> /etc/profile
 RUN echo 'export HISTTIMEFORMAT="%Y-%m-%d %T \$LC_NAME \$SSH_TTY " ' >> /etc/profile
 
 ADD https://raw.githubusercontent.com/airdb/docker/master/templates/sudoers.d/vagrant /etc/sudoers.d/
