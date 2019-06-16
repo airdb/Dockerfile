@@ -13,25 +13,42 @@ function jslint() {
 }
 
 function usage() {
-	echo -e "Usage: $0 Git_URL"
+	COMMAND="run_lint.sh"
+	echo -e "Usage: $COMMAND lang url"
+	echo
+	echo -e "lang support:"
+	echo -e "\tgo\t- golang language"
+	echo -e "\tnodejs\t- nodejs language"
+	echo -e "\tpython\t- python language"
 	echo
 	echo -e "Example:"
-	echo -e "\t$0 https://github.com/bbhj/minabbs"
+	echo -e "\t$COMMAND go https://github.com/bbhj/minabbs"
 }
 
 function main() {
-  if [ -z "$1" ]; then
+  if [ "$#" -ne 2 ]; then
 	  usage
 	  exit 0
   fi
 
   set -xe
-  GIT_URL="$1"
+  LANG_TYPE="$1"
+  GIT_URL="$2"
   PROJECT=$(echo $GIT_URL | awk -F'/' '{print $NF}')
   git clone $GIT_URL $BUILD_DIR/$PROJECT/
   cd $BUILD_DIR/$PROJECT/
 
-  golint
+  case "$LANG_TYPE" in
+    go)
+      golint
+    ;;
+    python)
+      pylint
+    ;;
+    *)
+      usage
+    ;;
+  esac
 }
 
 # here we go
