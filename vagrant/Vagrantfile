@@ -2,13 +2,15 @@
 # vi: set ft=ruby :
 # Copyright @ airdb.com
 
-NAME = "toolbox"
-OS = "alpine"
-TAG = "base"
+#OS = "alpine"
+OS = "ubuntu"
+#TAG = "base"
+TAG = "fpm"
+NAME = "#{OS}-#{TAG}"
 ENV["LC_PORT"] = "8080"
 
 DOCKERFILE = "../images/#{OS}/#{TAG}.dockerfile"
-IMAGE = "airdb/#{OS}_#{TAG}"
+IMAGE = "airdb/#{OS}-#{TAG}"
 INIT_FILE = "../osinit/#{OS}_init.sh"
 
 USER = ENV["USER"]
@@ -34,7 +36,7 @@ Vagrant.configure("2") do |config|
         d.dockerfile = "#{DOCKERFILE}"
         d.build_dir = "./"
         d.build_args = ["--no-cache"]
-        d.build_args = ["-t", "#{FULLNAME}"]
+        d.build_args = ["-t", "#{IMAGE}"]
       else
         d.image = "#{IMAGE}"
       end
