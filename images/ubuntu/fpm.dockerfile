@@ -21,11 +21,10 @@ ENV echo "export RUNNING_CONTEXT=docker" >> /etc/profile
 
 RUN echo "export PS1='[\H \W]\\$ '" >> /root/.profile
 
-
 WORKDIR /srv
 
 RUN apt update && apt-get install -y sudo vim libgcrypt-dev libgd-dev ruby ruby-dev rubygems-integration build-essential
 
 RUN gem install --no-ri --no-rdoc fpm
 
-
+CMDB fpm
