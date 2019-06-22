@@ -1,16 +1,31 @@
 apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: alpine-sshd
+spec:
+   replicas: 1
+   selector:
+     os: alpine
+   template:
+     metadata:
+       labels:
+         os: alpine
+     spec:
+       containers:
+       - name: alpine-sshd
+         image: airdb/alpine-sshd:latest
+         ports:
+         - containerPort: 22
+---
+apiVersion: v1
 kind: Service
 metadata:
-  name: demo
-  labels:
-    os: alpine
+  name: alpine-sshd
 spec:
-  ports:
-  - name: ssh
-    port: 22
-    nodePort: 30216
-    targetPort: 4000
-    protocol: TCP
-  selector:
-      airdb/sshd:latest
   type: NodePort
+  ports:
+   - port: 22
+     nodePort: 30022
+     targetPort: 22
+  selector:
+    os: alpine
