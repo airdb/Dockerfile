@@ -1,18 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: demo-airdb-test-sg
+  name: webapp
   labels:
-     os: alpine
+    app: webapp
 spec:
+  hostNetwork: true
   containers:
-  - name: demo
-    image: airdb/sshd
+  - name: webapp
+    image: airdb/alpine-sshd
     ports:
-      - name: ssh
-        containerPort: 22
-        hostPort: 400
-    env:
-    - name: Test
-      value: "123456"
-  restartPolicy: OnFailure
+    - containerPort: 22
