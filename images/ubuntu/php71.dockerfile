@@ -16,7 +16,7 @@ ENV PHP_VERSION 7.1
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get -y install  dialog libreadline6 libreadline6-dev && \
 	apt-get update && \
-	apt-get -y install software-properties-toolbox && \
+	apt-get -y install software-properties-common && \
     LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && \
     apt-get update && \
     apt-get -y --allow-unauthenticated install mod_php${PHP_VERSION} \
