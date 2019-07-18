@@ -14,14 +14,23 @@ ENV PHP_VERSION 7.1
 # libpcre3 libssl1.1 php-toolbox php7.1-toolbox php7.1-json php7.1-opcache php7.1-readline php7.1-cli php7.1-fpm
 #	software-properties-toolbox  && \
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get -y install  dialog libreadline6 libreadline6-dev && \
-	apt-get update && \
-	apt-get -y install software-properties-common && \
+#RUN apt-get update && apt-get -y install  dialog libreadline6 libreadline6-dev && \
+RUN apt-get update
+
+RUN apt-get -y install software-properties-common && \
     LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && \
-    apt-get update && \
-    apt-get -y --allow-unauthenticated install mod_php${PHP_VERSION} \
-	php${PHP_VERSION}-{fpm, xml, process, mbstring, gd, toolbox, cli, pear, \
-	opcache, bcmath, pdo, dev, pecl, pecl mysql} && \
+    apt-get update
+RUN apt-get -y --allow-unauthenticated install \
+	php${PHP_VERSION}-fpm \
+	php${PHP_VERSION}-xml \
+	php${PHP_VERSION}-common \
+	php${PHP_VERSION}-mbstring \
+	php${PHP_VERSION}-gd \
+	php${PHP_VERSION}-cli \
+	php${PHP_VERSION}-opcache \
+	php${PHP_VERSION}-bcmath \
+	php${PHP_VERSION}-dev \
+	php${PHP_VERSION}-mysql && \
     mkdir -p /run/php/ && \
     sed -i 's/^listen = .*/listen = 0.0.0.0:9000/' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
 
