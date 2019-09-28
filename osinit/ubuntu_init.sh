@@ -101,10 +101,8 @@ function usage() {
 }
 
 function main() {
+    base
     case $1 in
-        base)
-            base
-            ;;
         toolbox)
             base
             toolbox

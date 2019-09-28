@@ -6,6 +6,14 @@ Docker
 # Intro
 support docker.  haha~
 
+## VM osinit
+
+user-data:
+```
+http://www.airdb.com/docker/osinit/ubuntu_init.sh
+```
+
+
 # Part 1 - Create Docker Base Images
 
 Step 1: Setup
