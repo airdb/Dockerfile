@@ -2,7 +2,7 @@
 
 function base() {
   echo "Set timezone"
-  ln -snf /usr/share/zoneinfo/Asia/Singapore /etc/localtime && echo 'Asia/Singapore' > /etc/timezone
+  ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone
 
   #echo "Disable rc.d"
   #echo exit 0 > /usr/sbin/update-rc.d && chmod a+x /usr/sbin/update-rc.d
@@ -23,6 +23,12 @@ function base() {
 #fi
 declare -r  LC_NAME LC_IDENTIFICATION
 HISTTIMEFORMAT="%Y-%m-%d %T \$LC_NAME \$SSH_TTY "
+
+function qkube() {
+  service=$1
+  container=$(kubectl get pods -l "k8s-app=$service" -o jsonpath="{.items[0].metadata.name}")
+  kubectl exec -it $container bash
+}
 EOF
 
 }

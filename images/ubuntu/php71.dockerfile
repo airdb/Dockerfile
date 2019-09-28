@@ -32,7 +32,8 @@ RUN apt-get -y --allow-unauthenticated install \
 	php${PHP_VERSION}-dev \
 	php${PHP_VERSION}-mysql && \
     mkdir -p /run/php/ && \
-    sed -i 's/^listen = .*/listen = 0.0.0.0:9000/' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
+    sed -i 's/^listen = .*/listen = 0.0.0.0:9000/' /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf && \
+    sed -i '/php_mysqli/s/;extension=php_mysqli.dll/extension=php_mysqli.so/g' /etc/php/${PHP_VERSION}/fpm/php.ini
 
 
 
