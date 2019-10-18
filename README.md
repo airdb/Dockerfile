@@ -1,4 +1,4 @@
-Docker
+Init
 
 [![LICENSE](https://img.shields.io/badge/license-airdb.host-blue.svg)](https://github.com/airdb)
 [![Build Status](https://travis-ci.org/airdb/docker.svg?branch=master)](https://travis-ci.org/airdb/docker)
@@ -6,13 +6,23 @@ Docker
 # Intro
 support docker.  haha~
 
-## VM osinit
+
+# Development Init
+## Git
+
+```
+git config --global core.hooksPath .github/hooks
+```
+
+# OS Init
+## Cloud Server
 
 user-data:
 ```
 http://www.airdb.com/docker/osinit/ubuntu_init.sh
 ```
 
+# Docker
 
 # Part 1 - Create Docker Base Images
 
