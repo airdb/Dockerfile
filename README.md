@@ -12,7 +12,7 @@ Include Server and Local PC Environment.
 
 user-data:
 ```
-https://init.airdb.host/init/osinit/ubuntu_init.sh
+https://init.airdb.host/osinit/ubuntu_init.sh
 ```
 
 
