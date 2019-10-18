@@ -1,5 +1,3 @@
-Init
-
 [![LICENSE](https://img.shields.io/badge/license-airdb.host-blue.svg)](https://github.com/airdb)
 [![Build Status](https://travis-ci.org/airdb/docker.svg?branch=master)](https://travis-ci.org/airdb/docker)
 
@@ -8,13 +6,9 @@ support docker.  haha~
 
 
 # Development Init
-## Git
 
-```
-git config --global core.hooksPath .github/hooks
-```
 
-# OS Init
+# Part 1 - OS Environment
 ## Cloud Server
 
 user-data:
@@ -52,5 +46,13 @@ Step 4: Clean bad vagrant information.
 `vagrant global-status --prune`
 
 # Part 2 - Development Environment
+
+## Git
+
+```
+git config --global core.hooksPath .github/hooks
+```
+
+# Part 3 - Local PC Environment
 
 
