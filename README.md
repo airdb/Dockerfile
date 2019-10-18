@@ -1,10 +1,8 @@
 [![LICENSE](https://img.shields.io/badge/license-airdb.host-blue.svg)](https://github.com/airdb)
 [![Build Status](https://travis-ci.org/airdb/docker.svg?branch=master)](https://travis-ci.org/airdb/docker)
 
-# Intro
-
-
-# Development Init
+# Intro 
+Development Init
 
 
 # Part 1 - OS Environment 
