@@ -2,27 +2,36 @@
 [![Build Status](https://travis-ci.org/airdb/docker.svg?branch=master)](https://travis-ci.org/airdb/docker)
 
 # Intro
-support docker.  haha~
 
 
 # Development Init
 
 
-# Part 1 - OS Environment
+# Part 1 - OS Environment 
+Include Server and Local PC Environment.
+
 ## Cloud Server
 
 user-data:
 ```
-http://www.airdb.com/docker/osinit/ubuntu_init.sh
+https://init.airdb.host/init/osinit/ubuntu_init.sh
 ```
 
-# Docker
 
-# Part 1 - Create Docker Base Images
+
+# Part 2 - Development Environment
+
+## Git
+
+```
+git config --global core.hooksPath .github/hooks
+```
+
+
+## Vagrant
 
 Step 1: Setup
 - Install [vagrant](https://www.vagrantup.com/downloads.html)
-- Install Docker [Mac](https://docs.docker.com/docker-for-mac/install/)  [Windows](https://docs.docker.com/docker-for-windows/install/)
 
 Step 2: Prepare for Vagrant
 ```plain
@@ -44,15 +53,3 @@ Step 3: Create vms and Deploy service
 Step 4: Clean bad vagrant information.
 
 `vagrant global-status --prune`
-
-# Part 2 - Development Environment
-
-## Git
-
-```
-git config --global core.hooksPath .github/hooks
-```
-
-# Part 3 - Local PC Environment
-
-
