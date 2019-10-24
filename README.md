@@ -25,6 +25,11 @@ https://init.airdb.host/osinit/ubuntu_init.sh
 git config --global core.hooksPath .github/hooks
 ```
 
+## docker
+
+```
+docker exec  -e COLUMNS="`tput cols`" -e LINES="`tput lines`"  -it airdb/go bash
+```
 
 ## Vagrant
 
