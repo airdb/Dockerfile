@@ -10,9 +10,8 @@ ENV PS1 '[\H \W]\$ '
 ENV PASSWD airdb.com
 
 ADD https://raw.githubusercontent.com/airdb/docker/master/templates/motd /etc/motd
-ADD https://raw.githubusercontent.com/airdb/docker/master/osinit/authorized_keys /root/.ssh/
+ADD https://github.com/airdb/adb/releases/download/v1.0.0/adb /bin/
 
-#ADD airdb.com.sh /etc/profile.d/
 ENV HOMEDIR /srv
 WORKDIR $HOMEDIR
 
