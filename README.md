@@ -22,14 +22,12 @@ https://init.airdb.host/osinit/ubuntu_init.sh
 
 [Node](cmd/node.md)
 
-[Docker](cmd/docker.md)
-
 [Helm Repo](https://www.airdb.com/helm/)
 
 ## Bash Config
 
 ## Container Tools
-[Vagrant](vagrant/)
 
+[Docker](cmd/docker.md)
 
-`vagrant global-status --prune`
+[Vagrant](cmd/vagrant.md)
