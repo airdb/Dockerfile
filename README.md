@@ -18,20 +18,16 @@ https://init.airdb.host/osinit/ubuntu_init.sh
 
 # Part 2 - Development Environment
 
-## Bash Config
+[Git](cmd/git.md)
 
-```
-git config --global core.hooksPath .github/hooks
-docker exec  -e COLUMNS="`tput cols`" -e LINES="`tput lines`"  -it airdb/go bash
-```
+[Docker](cmd/docker.md)
+
+[Helm Repo](https://www.airdb.com/helm/)
+
+## Bash Config
 
 ## Container Tools
 [Vagrant](vagrant/)
 
 
-## Repo
-
 `vagrant global-status --prune`
-
-[Git](cmd/git.md)
-[Helm Repo](https://www.airdb.com/helm/)
