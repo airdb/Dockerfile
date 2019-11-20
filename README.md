@@ -20,6 +20,8 @@ https://init.airdb.host/osinit/ubuntu_init.sh
 
 [Git](cmd/git.md)
 
+[Node](cmd/node.md)
+
 [Docker](cmd/docker.md)
 
 [Helm Repo](https://www.airdb.com/helm/)
