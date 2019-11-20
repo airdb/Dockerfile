@@ -1,14 +1,14 @@
 [![LICENSE](https://img.shields.io/badge/license-airdb.host-blue.svg)](https://github.com/airdb)
 [![Build Status](https://travis-ci.org/airdb/docker.svg?branch=master)](https://travis-ci.org/airdb/docker)
 
-# Intro 
+# Intro
 Development Init
 
 
-# Part 1 - OS Environment 
+# Part 1 - OS Environment
 Include Server and Local PC Environment.
 
-## Cloud Server
+## Cloud Init
 
 user-data:
 ```
@@ -16,40 +16,22 @@ https://init.airdb.host/osinit/ubuntu_init.sh
 ```
 
 
-
 # Part 2 - Development Environment
 
-## Git
+## Bash Config
 
 ```
 git config --global core.hooksPath .github/hooks
+docker exec  -e COLUMNS="`tput cols`" -e LINES="`tput lines`"  -it airdb/go bash
 ```
 
+## Container Tools
+[Vagrant](vagrant/)
 
-## Vagrant
 
-Step 1: Setup
-- Install [vagrant](https://www.vagrantup.com/downloads.html)
-
-Step 2: Prepare for Vagrant
-```plain
-git clone https://github.com/airdb/docker
-cd docker/vagrant
-```
-or
-```plain
-wget https://raw.githubusercontent.com/airdb/docker/master/vagrant/Vagrantfile -p $your_vagrant_path
-```
-
-Step 3: Create vms and Deploy service
-```plain
-  vagrant up
-  vagrant status
-  vagrant ssh
-```
-
-Step 4: Clean bad vagrant information.
+## Repo
 
 `vagrant global-status --prune`
 
 [Git](cmd/git.md)
+[Helm Repo](https://www.airdb.com/helm/)
