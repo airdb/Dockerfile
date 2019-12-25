@@ -32,6 +32,8 @@ https://init.airdb.host/osinit/ubuntu_init.sh
 
 [Docker](cmd/docker.md)
 
+[kubectl-iexec](https://github.com/gabeduke/kubectl-iexec)
+
 [Vagrant](cmd/vagrant.md)
 
 ## Infra as Code
