@@ -20,6 +20,8 @@ https://init.airdb.host/osinit/ubuntu_init.sh
 
 [Git](cmd/git.md)
 
+[SourceTree](https://www.sourcetreeapp.com/)
+
 [Node](cmd/node.md)
 
 [Helm Repo](https://www.airdb.com/helm/)
@@ -31,3 +33,14 @@ https://init.airdb.host/osinit/ubuntu_init.sh
 [Docker](cmd/docker.md)
 
 [Vagrant](cmd/vagrant.md)
+
+## Infra as Code
+
+[terraform](https://www.terraform.io/docs/providers)
+
+## Stress Test
+
+[Goreplay](https://github.com/buger/goreplay)
+
+## Design tools
+[Figma](https://www.figma.com)
