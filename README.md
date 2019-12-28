@@ -46,3 +46,7 @@ https://init.airdb.host/osinit/ubuntu_init.sh
 
 ## Design tools
 [Figma](https://www.figma.com)
+
+## Chrome plugin
+
+[vimium](https://github.com/philc/vimium)
