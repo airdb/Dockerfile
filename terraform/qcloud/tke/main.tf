@@ -1,3 +1,7 @@
+provider "tencentcloud" {
+  region = "ap-singapore"
+}
+
 variable "availability_zone" {
   default = "ap-singapore-1"
 }
@@ -11,10 +15,10 @@ variable "subnet" {
 }
 
 variable "default_instance_type" {
-  default = "SA1.SMALL1"
+  default = "S3.SMALL1"
 }
 
 variable "scale_instance_type" {
-  default = "S2.SMALL1"
+  default = "S3.SMALL1"
 }
 
