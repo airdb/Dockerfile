@@ -21,6 +21,8 @@ function base() {
 #if [ ! -z  LC_SSH_USER ]; then
 #  export LC_SSH_USER=$USER
 #fi
+export EDITOR=vim
+
 declare -r  LC_NAME LC_IDENTIFICATION
 HISTTIMEFORMAT="%Y-%m-%d %T \$LC_NAME \$SSH_TTY "
 

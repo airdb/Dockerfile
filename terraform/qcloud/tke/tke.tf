@@ -15,9 +15,9 @@ resource "tencentcloud_kubernetes_cluster" "managed_cluster" {
     instance_type              = var.default_instance_type
     #system_disk_type           = "CLOUD_SSD"
     #system_disk_size           = 60
-    #internet_charge_type       = "TRAFFIC_POSTPAID_BY_HOUR"
-    #internet_max_bandwidth_out = 100
-    #public_ip_assigned         = true
+    internet_charge_type       = "TRAFFIC_POSTPAID_BY_HOUR"
+    internet_max_bandwidth_out = 1
+    public_ip_assigned         = true
     subnet_id                  = var.subnet
 
     data_disk {
