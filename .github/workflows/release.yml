@@ -25,6 +25,8 @@ jobs:
 
       - name: Build Linux Binary
         run: |
+          echo ${{ steps.bump_version.outputs.new_tag }}
+          echo ${{ steps.bump_version.outputs.tag }}
           bash osinit/tools.sh
           zip tools-linux-amd64.zip tools
 
