@@ -50,3 +50,4 @@ https://init.airdb.host/osinit/ubuntu_init.sh
 ## Chrome plugin
 
 [vimium](https://github.com/philc/vimium)
+
