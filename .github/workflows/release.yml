@@ -28,7 +28,7 @@ jobs:
           echo ${{ steps.bump_version.outputs.new_tag }}
           echo ${{ steps.bump_version.outputs.tag }}
           bash osinit/tools.sh
-          zip tools-linux-amd64.zip tools
+          zip -r tools-linux-amd64.zip tools
 
       - name: Create Release
         id: create_release
