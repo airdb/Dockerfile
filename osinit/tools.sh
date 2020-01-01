@@ -5,8 +5,7 @@ wget https://get.helm.sh/${helm_package_name}
 
 kubectl_iexec_version="1.2.0"
 kubectl_iexec_package_name="kubectl-iexec_${kubectl_iexec_version}_Linux_x86_64.tar.gz"
-wget
-https://github.com/gabeduke/kubectl-iexec/releases/download/${kubectl_iexec_version}/${kubectl_iexec_package_name}
+wget https://github.com/gabeduke/kubectl-iexec/releases/download/${kubectl_iexec_version}/${kubectl_iexec_package_name}
 
 wget https://github.com/stedolan/jq/releases/latest/download/jq-linux64
 
