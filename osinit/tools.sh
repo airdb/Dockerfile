@@ -14,3 +14,4 @@ cd tools
 cp ../jq-linux64 jq
 tar xvf ../${helm_package_name} linux-amd64/helm --strip-components 1
 tar xvf ../${kubectl_iexec_package_name} kubectl-iexec
+cd ../
