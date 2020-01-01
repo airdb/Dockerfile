@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      # Push events to matching v*, i.e. v1.0, v20.15.10
+      - "v*"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v1
+      - name: Use Golang
+        uses: actions/setup-go@v1
+        with:
+          go-version: "1.13.x"
+      - name: Test
+        run: echo go test -v .
+
+      - name: Build Linux Binary
+        run: |
+          bash osinit/tools.sh
+          zip tools-linux-amd64.zip tools
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: false
+          prerelease: false
+
+      - name: Upload Release normal linux
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./tools-linux-amd64.zip
+          asset_name: tools-linux-amd64.zip
+          asset_content_type: application/zip
