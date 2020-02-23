@@ -1,7 +1,9 @@
 #!/bin/bash
 
+logfile="/tmp/osinit.log"
+
 function base() {
-  echo "Set timezone"
+  echo "Set timezone" | tee -a $logfile
   ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone
 
   #echo "Disable rc.d"
@@ -17,6 +19,7 @@ function base() {
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils
   apt-get -y install apt-file update-motd vim git
   update-motd
+
   cat >> /etc/profile << EOF
 #if [ ! -z  LC_SSH_USER ]; then
 #  export LC_SSH_USER=$USER
@@ -26,13 +29,7 @@ export EDITOR=vim
 declare -r  LC_NAME LC_IDENTIFICATION
 HISTTIMEFORMAT="%Y-%m-%d %T \$LC_NAME \$SSH_TTY "
 
-function qkube() {
-  service=$1
-  container=$(kubectl get pods -l "k8s-app=$service" -o jsonpath="{.items[0].metadata.name}")
-  kubectl exec -it $container bash
-}
 EOF
-
 }
 
 function toolbox() {
@@ -41,6 +38,8 @@ function toolbox() {
   apt-get -y install python-pip python-dev libmysqlclient-dev
   apt-get -y install iputils-ping telnet net-tools pylint dnsutils tree git whois
   apt-get -y install redis-server
+  sudo snap install helm --classic
+
   pip install MySQL-python
   LC_ALL=C pip install -U pip
 }
@@ -104,11 +103,8 @@ function usage() {
 
 function main() {
     base
+    toolbox
     case $1 in
-        toolbox)
-            base
-            toolbox
-            ;;
         golang)
             golang
             ;;
@@ -132,3 +128,4 @@ function main() {
 
 ## here we go
 main "$@"
+echo "Install finish!" | tee -a $logfile
