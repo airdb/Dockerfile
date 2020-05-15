@@ -1,5 +1,20 @@
+# Configure the TencentCloud Provider
 provider "tencentcloud" {
-  region = "ap-singapore"
+  secret_id  = var.secret_id
+  secret_key = var.secret_key
+  region     = var.region
+}
+
+variable "secret_id" {
+  default = ""
+}
+
+variable "secret_key" {
+  default = ""
+}
+
+variable "region" {
+  default = "ap-singapore"
 }
 
 variable "availability_zone" {
