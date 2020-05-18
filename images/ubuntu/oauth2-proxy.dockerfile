@@ -19,3 +19,7 @@ RUN cd /tmp/ && \
 	tar xvf ${PKG}.tar.gz && \
 	mv ${PKG}/oauth2_proxy /usr/bin && \
 	rm -rf /tmp/${PKG} /tmp/${PKG}.tar.gz
+
+ADD https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/contrib/oauth2-proxy.cfg.example /etc/oauth2-proxy.cfg
+
+ENTRYPOINT ["oauth2_proxy", "--config=/etc/oauth2-proxy.cfg"]
