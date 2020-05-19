@@ -22,4 +22,4 @@ RUN cd /tmp/ && \
 
 ADD https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/contrib/oauth2-proxy.cfg.example /etc/oauth2-proxy.cfg
 
-ENTRYPOINT ["oauth2_proxy", "--config=/etc/oauth2-proxy.cfg"]
+CMD ["oauth2_proxy", "--config=/etc/oauth2-proxy.cfg"]
