@@ -11,7 +11,8 @@ RUN apt-get update &&  \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends ca-certificates php-fpm nginx openssl php-mysql php-gd php-bcmath php-mbstring php-xml php-curl && \
     apt-get install -y --no-install-recommends mysql-client iputils-ping vim && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir -p /run/php 
 
 COPY root /
 
