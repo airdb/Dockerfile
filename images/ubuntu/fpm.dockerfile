@@ -1,19 +1,10 @@
-FROM ubuntu:16.04
+FROM ubuntu
+
+# Usage:
+# docker build -t airdb/fpm . -f fpm.dockerfile
+# docker run -it --rm --privileged -v $(pwd):/srv airdb/fpm
 
 MAINTAINER airdb.com
-RUN apt-get update && apt-get install -y curl openssh-server lsb-core sudo
-RUN mkdir /var/run/sshd
-RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-
-# SSH login fix. Otherwise user is kicked off after login
-RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
-
-RUN echo "vagrant ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/README
-RUN echo "Defaults:vagrant !requiretty" >> /etc/sudoers.d/README
-ADD https://raw.githubusercontent.com/airdb/docker/master/osinit/authorized_keys /root/.ssh/
-ADD https://raw.githubusercontent.com/airdb/docker/master/templates/vim/.vimrc /root/
-
-ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
 ENV RUNNING_CONTEXT "docker"
@@ -27,4 +18,14 @@ RUN apt update && apt-get install -y sudo vim libgcrypt-dev libgd-dev ruby ruby-
 
 RUN gem install --no-ri --no-rdoc fpm
 
-CMDB fpm
+CMD echo fpm -s dir \
+	-t deb \
+	-a amd64 \
+	-n airdb-adb \
+	-v 1.0.0  \
+	-m 'Dean CN <deanh@airdb.com>' \
+	--url 'https://www.airdb.com' \
+	--description 'Hello airdb' \
+	--before-install ./output/pre-install.sh \
+	--post-install ./output/post-install.sh \
+	-C ./output/ 
