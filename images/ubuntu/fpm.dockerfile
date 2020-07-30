@@ -2,7 +2,7 @@ FROM ubuntu
 
 # Usage:
 # docker build -t airdb/fpm . -f fpm.dockerfile
-# docker run -it --rm --privileged -v $(pwd):/srv airdb/fpm
+# docker run --rm -v $(pwd):/srv airdb/fpm
 
 MAINTAINER airdb.com
 RUN echo "export VISIBLE=now" >> /etc/profile
@@ -18,14 +18,14 @@ RUN apt update && apt-get install -y sudo vim libgcrypt-dev libgd-dev ruby ruby-
 
 RUN gem install --no-ri --no-rdoc fpm
 
-CMD echo fpm -s dir \
+CMD fpm -s dir \
 	-t deb \
 	-a amd64 \
-	-n airdb-adb \
+	-n airdb \
 	-v 1.0.0  \
 	-m 'Dean CN <deanh@airdb.com>' \
 	--url 'https://www.airdb.com' \
 	--description 'Hello airdb' \
-	--before-install ./output/pre-install.sh \
-	--post-install ./output/post-install.sh \
+	--before-install ./output/before-install.sh \
+	--after-install ./output/after-install.sh \
 	-C ./output/ 
