@@ -19,4 +19,4 @@ CMD scf configure set --appid $TENCENTCLOUD_APPID \
 	--region $TENCENTCLOUD_REGION \
 	--secret-id $TENCENTCLOUD_SECRET_ID \
 	--secret-key $TENCENTCLOUD_SECRET_KEY &&\
-	scf deploy -t template.yaml -f
+	scf deploy -t template.yaml -f --update-event
