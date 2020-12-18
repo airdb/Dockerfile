@@ -5,7 +5,14 @@ FROM golang
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /srv
+WORKDIR $(go env GOPATH)/src/airdb.io/airdb
+
+RUN apt update && apt install -y \
+	curl \
+	git \
+	vim && \
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.33.0
+
 
 RUN echo "**** install serverless ****" && \
 	curl -o- -L https://slss.io/install | bash
