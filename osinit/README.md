@@ -11,3 +11,9 @@ chmod 440 /etc/sudoers.d/work
 
 ## 二、 常用公共软件安装
 yum install nginx whois bind-utils git lrzsz
+
+
+# TencentCloud Ubuntu:
+
+https://cloud.tencent.com/document/product/1207/45596?from=information.detail.腾讯云docker镜像加速
+
