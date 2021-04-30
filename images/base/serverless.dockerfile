@@ -5,7 +5,7 @@ FROM golang
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR $(go env GOPATH)/src/airdb.io/airdb
+WORKDIR ${GOPATH}/src/airdb.io/airdb
 
 RUN apt update && apt install -y \
 	curl \
