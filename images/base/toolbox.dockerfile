@@ -39,8 +39,10 @@ RUN apt-key --keyring /usr/share/keyrings/githubcli-archive-keyring.gpg adv --ke
 
 ADD https://golang.org/dl/go1.16.4.linux-amd64.tar.gz /tmp/go.tar.gz
 RUN tar xvf /tmp/go.tar.gz -C /srv/ && \
-	/srv/go/bin/go env -w GOPRIVATE=airdb.io,github.com/airdb 
-	#/srv/go/bin/go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+	/srv/go/bin/go env -w GOPRIVATE=airdb.io,github.com/airdb  && \
+	/srv/go/bin/go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+RUN rm -f /tmp/go.tar.gz
 
 WORKDIR /root/src/airdb.io/airdb
 RUN echo "export RUNNING_CONTEXT=docker" >> /etc/profile
